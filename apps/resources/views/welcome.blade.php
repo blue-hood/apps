@@ -85,6 +85,7 @@
                 </div>
 
                 <div class="links">
+                    <a href="{{ route('index').'?'.http_build_query(['a' => 1]) }}">GET Test</a>
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
