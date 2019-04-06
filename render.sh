@@ -13,6 +13,7 @@ php artisan cache:clear
 cd ../
 rm -rf apps.bluehood.local/.
 wget --mirror --page-requisites --html-extension $@ http://apps.bluehood.local
+# ここで sitemap.xml も wget すること。
 cp -r apps/public/. apps.bluehood.local/
 rm apps.bluehood.local/index.php
 
