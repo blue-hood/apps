@@ -7,4 +7,6 @@
 @endsection
 
 @section('content')
+{{ print_r(request()->input(), true) }}
+<a href="{{ route('index').'?a=1' }}">GET a=1</a>
 @endsection
