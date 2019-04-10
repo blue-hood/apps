@@ -1,13 +1,84 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Nunito");
+@import url("https://unpkg.com/ress/dist/ress.min.css");
 
-// Variables
-@import "variables";
+// color
+$black: black;
+$typography-black: #333;
+$white: white;
 
-// Bootstrap
-@import "~bootstrap/scss/bootstrap";
+$primary: mediumslateblue;
 
-.navbar-laravel {
-    background-color: #fff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+// typography
+body {
+    font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
+        游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
+    font-weight: 300;
+    color: $typography-black;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 300;
+    color: $black;
+}
+
+a {
+    color: inherit;
+
+    &:hover {
+        color: $primary;
+    }
+}
+
+// layout
+$pc-width: 984px;
+
+@mixin container {
+    display: flex;
+    justify-content: center;
+
+    & > div {
+        max-width: $pc-width;
+        flex: 1;
+    }
+}
+
+// nav
+nav {
+    @include container();
+    height: 48px;
+    border-bottom: 1px solid rgba($black, 0.2);
+
+    & > div {
+        display: flex;
+        align-items: center;
+
+        .nav-menu {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+
+            a {
+                margin-left: 1rem;
+                text-decoration: none;
+            }
+        }
+    }
+}
+
+// header
+header {
+    h1 {
+        text-align: center;
+        max-width: 44rem;
+        margin: 100px auto;
+
+        img {
+            max-width: 256px;
+            height: auto;
+        }
+    }
 }

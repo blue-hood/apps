@@ -6,7 +6,7 @@
   @if(isset($description)) <meta property="description" content="{{ $description }}"> @endif
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="theme-color" content="lightskyblue">
+  <meta name="theme-color" content="mediumslateblue">
   @if(isset($robots)) <meta name="robots" content="{{ $robots }}"> @endif
 
   <meta name="twitter:card" content="summary">
