@@ -17,9 +17,9 @@
   {{--<meta property="og:image" content="og.png">--}}
 
   {{-- <link rel="canonical" href="現状ではnormalize(url())とする。"> --}}
-  {{--<link rel="icon" href="favicon@32x32.png" sizes="32x32">
-  <link rel="icon" href="favicon@192x192.png" sizes="192x192">
-  <link rel="prev" href="前のページのURL">
+  <link rel="icon" href="{{ url('/images/favicon@32px.png') }}" sizes="32x32">
+  <link rel="icon" href="{{ url('/images/favicon@192px.png') }}" sizes="192x192">
+  {{--<link rel="prev" href="前のページのURL">
   <link rel="next" href="次のページのURL">--}}
 
   <link href="{{ mix('/css/app.css') }}" rel="stylesheet">

@@ -36,23 +36,26 @@ a {
 // layout
 $pc-width: 984px;
 
-@mixin container {
+@mixin container($padding) {
     display: flex;
     justify-content: center;
+    padding-left: $padding;
+    padding-right: $padding;
 
     & > div {
         max-width: $pc-width;
         flex: 1;
+
+        @content;
     }
 }
 
 // nav
 nav {
-    @include container();
     height: 48px;
     border-bottom: 1px solid rgba($black, 0.2);
 
-    & > div {
+    @include container(1rem) {
         display: flex;
         align-items: center;
 
@@ -71,14 +74,35 @@ nav {
 
 // header
 header {
-    h1 {
-        text-align: center;
-        max-width: 44rem;
-        margin: 100px auto;
+    @include container(1rem) {
+        h1 {
+            text-align: center;
+            max-width: 42rem;
+            margin: 6rem auto;
 
-        img {
-            max-width: 256px;
-            height: auto;
+            img {
+                max-width: 256px;
+                height: auto;
+            }
         }
+    }
+}
+
+// article
+article {
+    @include container(2rem) {
+        section {
+            margin-bottom: 4rem;
+        }
+    }
+}
+
+// footer
+footer {
+    padding-bottom: 0.5rem;
+
+    @include container(1rem) {
+        text-align: right;
+        color: rgba($black, 0.4);
     }
 }

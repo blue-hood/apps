@@ -8,12 +8,21 @@
 
 @section('content')
   <header>
-    <h1>
+    <div>
+          <h1>
       <img src="{{ url('/images/bluehood.svg') }}" alt="BlueHood"><br>
-      BlueHood では人々の創作を支援するサービスをプロトタイピングし提供しています。
+      BlueHood では人々の創作を支援するアプリをプロトタイピングし提供しています。
     </h1>
+    </div>
   </header>
-
-{{ print_r(request()->input(), true) }}
-<a href="{{ route('index').'?a=1&b=2&c=3' }}">GET a=1, b=2, c=3</a>
+  <article>
+      <div>
+    <section>
+      <h2>最近のアプリ</h2>
+    </section>
+    <section>        
+      <h2>最近の記事</h2>
+    </section>
+      </div>
+  </article>
 @endsection
