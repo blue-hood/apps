@@ -10,7 +10,11 @@ $primary: mediumslateblue;
 // typography
 body {
     font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
-        游ゴシック体, "Yu Gothic", YuGothic, sans-serif;
+        // for iOS
+            "游ゴシック Medium",
+        "Yu Gothic Medium",
+        // for Windows
+            sans-serif; // default
     font-weight: 300;
     color: $typography-black;
 }
@@ -59,6 +63,10 @@ nav {
         display: flex;
         align-items: center;
 
+        & > a {
+            text-decoration: none;
+        }
+
         .nav-menu {
             flex: 1;
             display: flex;
@@ -92,7 +100,7 @@ header {
 article {
     @include container(2rem) {
         section {
-            margin-bottom: 4rem;
+            margin: 2rem 0;
         }
     }
 }

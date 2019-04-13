@@ -3,8 +3,8 @@
 
 body {
     font-family: "\30D2\30E9\30AE\30CE\89D2\30B4\30B7\30C3\30AF   Pro",
-        "Hiragino Kaku Gothic Pro", 游ゴシック体, "Yu Gothic", YuGothic,
-        sans-serif;
+        "Hiragino Kaku Gothic Pro", "\6E38\30B4\30B7\30C3\30AF   Medium",
+        "Yu Gothic Medium", sans-serif;
     font-weight: 300;
     color: #333;
 }
@@ -41,6 +41,10 @@ nav > div {
     flex: 1;
     display: flex;
     align-items: center;
+}
+
+nav > div > a {
+    text-decoration: none;
 }
 
 nav > div .nav-menu {
@@ -90,7 +94,7 @@ article > div {
 }
 
 article > div section {
-    margin-bottom: 4rem;
+    margin: 2rem 0;
 }
 
 footer {
