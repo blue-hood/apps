@@ -1,3 +1,7 @@
+@php
+  $canonical = normalize(url()->full());   
+@endphp
+
 <head>
   {{-- Google アナリティクス --}}
 
@@ -11,12 +15,12 @@
 
   <meta name="twitter:card" content="summary">
   <meta name="twitter:site" content="@bluehood_admin">
-  {{-- <meta property="og:url" content="canonicalと同じにする。"> --}}
+  <meta property="og:url" content="{{ $canonical }}">
   @if(isset($title)) <meta property="og:title" content="{{ $title }}"> @endif
   @if(isset($description)) <meta property="og:description" content="{{ $description }}"> @endif
-  {{--<meta property="og:image" content="og.png">--}}
+  <meta property="og:image" content="{{ url('/images/og.png') }}">
 
-  {{-- <link rel="canonical" href="現状ではnormalize(url())とする。"> --}}
+  <link rel="canonical" href="{{ $canonical }}">
   <link rel="icon" href="{{ url('/images/favicon@32px.png') }}" sizes="32x32">
   <link rel="icon" href="{{ url('/images/favicon@192px.png') }}" sizes="192x192">
   {{--<link rel="prev" href="前のページのURL">
