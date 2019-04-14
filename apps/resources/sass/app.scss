@@ -5,12 +5,14 @@ $black: black;
 $typography-black: #333;
 $white: white;
 $primary: mediumslateblue;
+$danger: tomato;
 
 $colors: (
     black: $black,
     typography-black: $typography-black,
     white: $white,
-    primary: $primary
+    primary: $primary,
+    danger: $danger
 );
 
 // typography
@@ -40,6 +42,12 @@ a {
 
     &:hover {
         color: $primary;
+    }
+}
+
+@each $name, $color in $colors {
+    .#{$name} {
+        color: $color;
     }
 }
 
@@ -110,6 +118,10 @@ article {
     @include container(2rem) {
         section {
             margin: 2rem 0;
+
+            p {
+                margin-bottom: 2rem;
+            }
         }
     }
 }
@@ -137,8 +149,16 @@ footer {
     }
 }
 
+// container
+@each $name, $color in $colors {
+    .container-#{$name} {
+        border: 1px solid rgba($color, 0.6);
+        padding: 0.5rem 1rem;
+    }
+}
+
 // codemirror
 .CodeMirror {
-    border: 1px solid #eee;
+    border: 1px solid rgba($black, 0.1);
     height: auto !important;
 }

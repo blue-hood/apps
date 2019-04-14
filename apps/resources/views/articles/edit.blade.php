@@ -26,11 +26,24 @@
   <article>
     <div>
       <section>
+        @if ($errors->any())
+          <p>
+            <div class="container-danger danger">
+              @foreach ($errors->all() as $error)
+                <div>{{ $error }}</div>
+              @endforeach
+            </div>
+          </p>
+        @endif
+
         <h2>記事の編集</h2>
         <p>ファイルアップロードの機能も必要となります。Qiita や GitHub で採用されている MarkDown 形式です。</p>
-        <form>
-          <textarea id="content"></textarea>
+        <form action="{{ $action }}" method="POST">
+          {{ csrf_field() }}
+          @method($method)
+          <span>記事 ID</span><input name="id" value="{{ old('id') }}">
           <input class="button-primary" type="submit" value="保存">
+          <textarea name="content" id="content"></textarea>
         </form>
       </section>
     </div>

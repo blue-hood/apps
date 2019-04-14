@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Article;
 use Illuminate\Http\Request;
+use cebe\markdown\Markdown;
 
 class ArticleController extends Controller
 {
@@ -14,7 +15,6 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        //
     }
 
     /**
@@ -24,7 +24,7 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.edit');
+        return $this->edit();
     }
 
     /**
@@ -35,7 +35,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $this->update($request);
     }
 
     /**
@@ -55,9 +55,12 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function edit(Article $article)
+    public function edit(Article $article = null)
     {
-        //
+        $action = normalize(is_null($article) ? route('articles.store'):route('articles.update', $article->id));
+        $method = is_null($article) ? 'POST':'PUT';
+
+        return view('articles.edit', compact('action', 'method'));
     }
 
     /**
@@ -67,9 +70,12 @@ class ArticleController extends Controller
      * @param  \App\Article  $article
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Article $article)
+    public function update(Request $request, Article $article = null)
     {
-        //
+        $request->validate([
+            'id' => 'required|unique:articles',
+            'content' => 'required',
+        ]);
     }
 
     /**
