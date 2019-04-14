@@ -1,7 +1,7 @@
 @extends('html')
 
-@section('head')
-  @include('head', [
+@section('meta')
+  @include('meta', [
     'description' => 'BlueHood では人々の創作を支援するサービスをプロトタイピングし提供しています。',
   ])
 @endsection

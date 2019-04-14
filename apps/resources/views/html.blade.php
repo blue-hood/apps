@@ -1,6 +1,10 @@
 <!doctype html>
 <html>
-  @yield('head')
+  <head>
+    @yield('meta')
+    <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    @stack('styles')
+  </head>
   <body>
     @include('nav')
     @yield('content')
