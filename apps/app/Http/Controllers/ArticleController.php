@@ -74,8 +74,14 @@ class ArticleController extends Controller
     {
         $request->validate([
             'id' => 'required|unique:articles',
+            'title' => 'required',
             'content' => 'required',
         ]);
+
+        $article = Article::firstOrNew(['id' => $request->id]);
+        $article->title = $request->title;
+        $article->content = $request->content;
+        $article->save();
     }
 
     /**

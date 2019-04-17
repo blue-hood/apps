@@ -41,7 +41,8 @@
         <form action="{{ $action }}" method="POST">
           {{ csrf_field() }}
           @method($method)
-          <span>記事 ID</span><input name="id" value="{{ old('id') }}">
+          <span>記事 ID</span><input name="id" value="{{ old('id') }}"><br>
+          <span>タイトル</span><input name="title" value="{{ old('title') }}">
           <input class="button-primary" type="submit" value="保存">
           <textarea name="content" id="content"></textarea>
         </form>
