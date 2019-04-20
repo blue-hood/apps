@@ -52,7 +52,10 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        //
+        $article->create_date = Carbon::createFromFormat('Y-m-d H:i:s', $article->created_at)->format('Y-m-d');
+        $article->update_date = Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->format('Y-m-d');
+        $article->parsed_content = (new Markdown())->parse($article->content);
+        return view('articles.show', compact('article'));
     }
 
     /**
@@ -66,7 +69,11 @@ class ArticleController extends Controller
         $action = normalize(is_null($article) ? route('articles.store') : route('articles.update', $article->id));
         $method = is_null($article) ? 'POST' : 'PUT';
 
-        return view('articles.edit', compact('action', 'method'));
+        if (is_null($article)) {
+            $article = new Article();
+        }
+
+        return view('articles.edit', compact('action', 'method', 'article'));
     }
 
     /**
@@ -78,20 +85,30 @@ class ArticleController extends Controller
      */
     public function update(Request $request, Article $article = null)
     {
-        $request->validate([
-            'id' => 'required|unique:articles',
+        $validationList = [
+            'id' => 'required',
             'thumbnail' => 'required',
             'title' => 'required',
             'description' => 'required',
             'content' => 'required'
-        ]);
+        ];
+        if (is_null($article)) {
+            $validationList['id'] .= '|unique:articles';
+        }
+        $request->validate($validationList);
 
-        $article = Article::firstOrNew(['id' => $request->id]);
-        $article->thumbnail = $request->thumbnail;
-        $article->title = $request->title;
-        $article->description = $request->description;
-        $article->content = $request->content;
-        $article->save();
+        $newArticle = Article::firstOrNew(['id' => $request->id]);
+        $newArticle->thumbnail = $request->thumbnail;
+        $newArticle->title = $request->title;
+        $newArticle->description = $request->description;
+        $newArticle->content = $request->content;
+        $newArticle->save();
+
+        if (!is_null($article) && $article->id !== $newArticle->id) {
+            $article->delete();
+        }
+
+        return redirect(normalize(route('articles.show', $newArticle->id)));
     }
 
     /**

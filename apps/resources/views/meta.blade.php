@@ -12,12 +12,12 @@
 <meta name="theme-color" content="mediumslateblue">
 @if(isset($robots)) <meta name="robots" content="{{ $robots }}"> @endif
 
-<meta name="twitter:card" content="summary">
+<meta name="twitter:card" content="{{ $twitter_card??'summary' }}">
 <meta name="twitter:site" content="@bluehood_admin">
 <meta property="og:url" content="{{ $canonical }}">
 @if(isset($title)) <meta property="og:title" content="{{ $title }}"> @endif
 @if(isset($description)) <meta property="og:description" content="{{ $description }}"> @endif
-<meta property="og:image" content="{{ url('/images/og.png') }}">
+<meta property="og:image" content="{{ $og_image??url('/images/og.png') }}">
 
 <link rel="canonical" href="{{ $canonical }}">
 <link rel="icon" href="{{ url('/images/favicon@32px.png') }}" sizes="32x32">

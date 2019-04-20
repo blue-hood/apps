@@ -52,24 +52,24 @@
             <tbody>
               <tr>
                 <td>記事 ID</td>
-                <td><input name="id" value="{{ old('id') }}"></td>
+                <td><input name="id" value="{{ old('id', $article->id) }}"></td>
               </tr>
               <tr>
-                <td>サムネイル URL</td>
-                <td><input name="thumbnail" value="{{ old('thumbnail') }}"></td>
+                <td>サムネイル 公開パス</td>
+                <td><input name="thumbnail" value="{{ old('thumbnail', $article->thumbnail) }}"></td>
               </tr>
               <tr>
                 <td>タイトル</td>
-                <td><input name="title" value="{{ old('title') }}"></td>
+                <td><input name="title" value="{{ old('title', $article->title) }}"></td>
               </tr>
               <tr>
                 <td>説明文</td>
-                <td><input name="description" value="{{ old('description') }}"></td>
+                <td><input name="description" value="{{ old('description', $article->description) }}"></td>
               </tr>
             </tbody>
           </table>
           <input class="button-primary" type="submit" value="保存">
-          <textarea name="content" id="content">{{ old('content') }}</textarea>
+          <textarea name="content" id="content">{{ old('content', $article->content) }}</textarea>
         </form>
       </section>
     </div>

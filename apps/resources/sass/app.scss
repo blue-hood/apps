@@ -16,13 +16,10 @@ $colors: (
 );
 
 // typography
+@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,700");
+
 body {
-    font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
-        // for iOS
-            "游ゴシック Medium",
-        "Yu Gothic Medium",
-        // for Windows
-            sans-serif; // default
+    font-family: "Noto Sans JP", sans-serif;
     font-weight: 300;
     color: $typography-black;
 }
@@ -33,8 +30,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-weight: 300;
-    color: $black;
+    font-weight: 700;
 }
 
 a {
@@ -42,9 +38,6 @@ a {
 
     &:hover {
         color: $primary;
-        * {
-            color: $primary;
-        }
     }
 }
 
@@ -56,45 +49,104 @@ a {
 
 // layout
 $pc-width: 984px;
+$sp-width: 750px;
 
 @mixin container($padding) {
-    display: flex;
-    justify-content: center;
     padding-left: $padding;
     padding-right: $padding;
 
     & > div {
         max-width: $pc-width;
-        flex: 1;
+        margin-left: auto;
+        margin-right: auto;
 
+        @content;
+    }
+}
+
+@mixin pc() {
+    @media screen and (min-width: $sp-width + 1px) {
+        @content;
+    }
+}
+
+@mixin sp() {
+    @media screen and (max-width: $sp-width) {
         @content;
     }
 }
 
 // nav
 nav {
+    $height: 48px;
+
     position: sticky;
     top: 0;
     background-color: white;
-    height: 48px;
+    height: $height;
     box-shadow: 0 0 2px 2px rgba($black, 0.1);
 
     @include container(1rem) {
+        height: 100%;
         display: flex;
         align-items: center;
+        justify-content: space-between;
 
         & > a {
             text-decoration: none;
         }
 
-        .nav-menu {
-            flex: 1;
-            display: flex;
-            justify-content: flex-end;
+        h1 {
+            font-weight: 300;
+        }
 
-            a {
-                margin-left: 1rem;
-                text-decoration: none;
+        .nav-menu {
+            @include pc() {
+                flex: 1;
+                display: flex;
+                justify-content: flex-end;
+
+                a {
+                    margin-left: 1rem;
+                    text-decoration: none;
+                }
+            }
+
+            @include sp() {
+                position: absolute;
+                top: $height;
+                left: 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                width: 100%;
+                height: 0;
+                overflow-y: hidden;
+                background-color: $white;
+                text-align: center;
+                transition: height 0.3s;
+
+                &.active {
+                    height: calc(100vh - #{$height});
+                }
+
+                a {
+                    text-decoration: none;
+                    flex: 1;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+            }
+        }
+
+        .hamburger-button {
+            @include pc() {
+                display: none;
+            }
+
+            @include sp() {
+                cursor: pointer;
             }
         }
     }
@@ -107,6 +159,7 @@ header {
             text-align: center;
             max-width: 42rem;
             margin: 6rem auto;
+            font-weight: 300;
 
             img {
                 max-width: 256px;
@@ -118,7 +171,7 @@ header {
 
 // article
 article {
-    @include container(2rem) {
+    @include container(1rem) {
         section {
             margin: 2rem 0;
 
@@ -174,15 +227,13 @@ footer {
         justify-content: space-around;
 
         .content {
-            $width: 280px;
-            width: $width;
+            width: 280px;
             margin: 1rem;
             text-decoration: none;
 
             img {
-                width: $width;
-                height: calc(#{$width} * 9 / 16);
-                object-fit: cover;
+                width: 100%;
+                height: auto;
             }
 
             h3 {
@@ -191,6 +242,43 @@ footer {
 
             p {
                 margin: 0;
+            }
+        }
+    }
+}
+
+// articles.show
+.articles-show {
+    h2 {
+        margin-bottom: 2rem;
+    }
+
+    .content {
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-bottom: 2rem;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 0 auto;
+            display: block;
+        }
+
+        p {
+            //word-break: break-all;
+        }
+
+        .prettyprint {
+            margin-bottom: 2rem;
+            overflow: auto;
+            padding-left: 40px;
+
+            ol.linenums > li {
+                list-style-type: decimal;
             }
         }
     }
