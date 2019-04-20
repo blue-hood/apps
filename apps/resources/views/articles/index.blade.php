@@ -8,13 +8,21 @@
 @endsection
 
 @section('content')
-  <article>
+  <article class="articles-index">
     <div>
       <section>
         <h2>記事一覧</h2>
-        @foreach ($articles as $article)
-          {{ $article->title }}
-        @endforeach
+
+        <div class="list">
+            @foreach ($articles as $article)
+              <a class="content" href="{{ normalize(route('articles.show', $article->id)) }}">
+                <img src="{{ $article->thumbnail }}" alt="{{ $article->title }}">
+                <div>{{ $article->date }}</div>
+                <h3>{{ $article->title }}</h3>
+                <p>{{ $article->description }}</p>
+              </a>
+            @endforeach
+        </div>
 
         {{ $articles->links() }}
       </section>

@@ -42,6 +42,9 @@ a {
 
     &:hover {
         color: $primary;
+        * {
+            color: $primary;
+        }
     }
 }
 
@@ -161,4 +164,34 @@ footer {
 .CodeMirror {
     border: 1px solid rgba($black, 0.1);
     height: auto !important;
+}
+
+// articles.index
+.articles-index {
+    .list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .content {
+            $width: 280px;
+            width: $width;
+            margin: 1rem;
+            text-decoration: none;
+
+            img {
+                width: $width;
+                height: calc(#{$width} * 9 / 16);
+                object-fit: cover;
+            }
+
+            h3 {
+                margin-bottom: 1rem;
+            }
+
+            p {
+                margin: 0;
+            }
+        }
+    }
 }

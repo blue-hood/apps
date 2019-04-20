@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Article;
 use Illuminate\Http\Request;
 use cebe\markdown\Markdown;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -16,6 +17,9 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::simplePaginate(10);
+        foreach ($articles as &$article) {
+            $article->date = Carbon::createFromFormat('Y-m-d H:i:s', $article->created_at)->format('Y-m-d');
+        }
         return view('articles.index', compact('articles'));
     }
 
@@ -59,8 +63,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article = null)
     {
-        $action = normalize(is_null($article) ? route('articles.store'):route('articles.update', $article->id));
-        $method = is_null($article) ? 'POST':'PUT';
+        $action = normalize(is_null($article) ? route('articles.store') : route('articles.update', $article->id));
+        $method = is_null($article) ? 'POST' : 'PUT';
 
         return view('articles.edit', compact('action', 'method'));
     }
@@ -79,7 +83,7 @@ class ArticleController extends Controller
             'thumbnail' => 'required',
             'title' => 'required',
             'description' => 'required',
-            'content' => 'required',
+            'content' => 'required'
         ]);
 
         $article = Article::firstOrNew(['id' => $request->id]);
