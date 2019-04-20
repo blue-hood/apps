@@ -10,7 +10,7 @@
 @push('scripts')
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.js" integrity="sha256-9a6VkdhEy67TOYPr0MCOeASoNMfBiifpuZsY7PzVHTg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/mode/markdown/markdown.min.js" integrity="sha256-BZXkUzlSBobUXEiSFbDIbTc/DOqhNdegF/iK5m99kbk=" crossorigin="anonymous"></script>
-  <script>  // 別の js ファイルにすること。
+  <script>
     const editor = CodeMirror.fromTextArea(document.querySelector('#content'), {
       mode:  'markdown',
       lineNumbers: true,
@@ -20,6 +20,14 @@
 
 @push('styles')
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.45.0/codemirror.min.css" integrity="sha256-I8NyGs4wjbMuBSUE40o55W6k6P7tu/7G28/JGUUYCIs=" crossorigin="anonymous" />
+  <style>
+    form table {
+      width: 100%;
+    }
+    form table input {
+      width: 100%;
+    }
+  </style>
 @endpush
 
 @section('content')
@@ -37,14 +45,31 @@
         @endif
 
         <h2>記事の編集</h2>
-        <p>ファイルアップロードの機能も必要となります。Qiita や GitHub で採用されている MarkDown 形式です。</p>
         <form action="{{ $action }}" method="POST">
           {{ csrf_field() }}
           @method($method)
-          <span>記事 ID</span><input name="id" value="{{ old('id') }}"><br>
-          <span>タイトル</span><input name="title" value="{{ old('title') }}">
+          <table>
+            <tbody>
+              <tr>
+                <td>記事 ID</td>
+                <td><input name="id" value="{{ old('id') }}"></td>
+              </tr>
+              <tr>
+                <td>サムネイル URL</td>
+                <td><input name="thumbnail" value="{{ old('thumbnail') }}"></td>
+              </tr>
+              <tr>
+                <td>タイトル</td>
+                <td><input name="title" value="{{ old('title') }}"></td>
+              </tr>
+              <tr>
+                <td>説明文</td>
+                <td><input name="description" value="{{ old('description') }}"></td>
+              </tr>
+            </tbody>
+          </table>
           <input class="button-primary" type="submit" value="保存">
-          <textarea name="content" id="content"></textarea>
+          <textarea name="content" id="content">{{ old('content') }}</textarea>
         </form>
       </section>
     </div>

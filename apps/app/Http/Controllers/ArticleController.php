@@ -15,6 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
+        $articles = Article::simplePaginate(10);
+        return view('articles.index', compact('articles'));
     }
 
     /**
@@ -74,12 +76,16 @@ class ArticleController extends Controller
     {
         $request->validate([
             'id' => 'required|unique:articles',
+            'thumbnail' => 'required',
             'title' => 'required',
+            'description' => 'required',
             'content' => 'required',
         ]);
 
         $article = Article::firstOrNew(['id' => $request->id]);
+        $article->thumbnail = $request->thumbnail;
         $article->title = $request->title;
+        $article->description = $request->description;
         $article->content = $request->content;
         $article->save();
     }
