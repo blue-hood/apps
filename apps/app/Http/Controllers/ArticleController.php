@@ -18,7 +18,7 @@ class ArticleController extends Controller
     {
         $articles = Article::simplePaginate(10);
         foreach ($articles as &$article) {
-            $article->date = Carbon::createFromFormat('Y-m-d H:i:s', $article->created_at)->format('Y-m-d');
+            $article->date = Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->format('Y-m-d');
         }
         return view('articles.index', compact('articles'));
     }
@@ -52,8 +52,7 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-        $article->create_date = Carbon::createFromFormat('Y-m-d H:i:s', $article->created_at)->format('Y-m-d');
-        $article->update_date = Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->format('Y-m-d');
+        $article->date = Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->format('Y-m-d');
         $article->parsed_content = (new Markdown())->parse($article->content);
         return view('articles.show', compact('article'));
     }

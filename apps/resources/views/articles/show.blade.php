@@ -10,14 +10,14 @@
 @endsection
 
 @push('scripts')
-  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js?skin=desert"></script>
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 @endpush
 
 @section('content')
   <article class="articles-show">
     <div>
       <section>
-        <div>{{ $article->create_date }} 投稿@if($article->create_date!==$article->update_date)　　{{ $article->update_date }} 更新@endif</div>
+        <div>{{ $article->date }}</div>
         <h2>{{ $article->title }}</h2>
         <div class="content">
           {!! $article->parsed_content !!}

@@ -2,7 +2,7 @@
 
 // color
 $black: black;
-$typography-black: #333;
+$typography-black: #222;
 $white: white;
 $primary: mediumslateblue;
 $danger: tomato;
@@ -22,6 +22,7 @@ body {
     font-family: "Noto Sans JP", sans-serif;
     font-weight: 300;
     color: $typography-black;
+    line-height: 1.75;
 }
 
 h1,
@@ -272,7 +273,14 @@ footer {
             //word-break: break-all;
         }
 
+        pre,
+        code {
+            font-family: monospace;
+        }
+
         .prettyprint {
+            border-radius: 3px;
+            border-color: #ddd;
             margin-bottom: 2rem;
             overflow: auto;
             padding-left: 40px;
