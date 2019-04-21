@@ -11,6 +11,11 @@
 
 @push('scripts')
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <script src="{{ url('/js/social-button.js') }}"></script>
+@endpush
+
+@push('styles')
+  <link rel="stylesheet" href="{{ url('/css/social-button.css') }}" />
 @endpush
 
 @section('content')
@@ -19,6 +24,7 @@
       <section>
         <div>{{ $article->date }}</div>
         <h2>{{ $article->title }}</h2>
+        <div id="social"></div>
         <div class="content">
           {!! $article->parsed_content !!}
         </div>
