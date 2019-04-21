@@ -24,7 +24,6 @@
       <section>
         <div>{{ $article->date }}</div>
         <h2>{{ $article->title }}</h2>
-        <div id="social"></div>
         <div class="content">
           {!! $article->parsed_content !!}
         </div>
@@ -42,6 +41,7 @@
             </p>
           </div>
         </div>
+        <div id="social"></div>
       </section>
     </div>
   </article>
