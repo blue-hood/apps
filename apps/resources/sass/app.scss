@@ -255,6 +255,8 @@ footer {
     }
 
     .content {
+        border-bottom: 1px solid rgba($black, 0.1);
+
         h3,
         h4,
         h5,
@@ -288,6 +290,23 @@ footer {
             ol.linenums > li {
                 list-style-type: decimal;
             }
+        }
+    }
+
+    .author {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        img {
+            width: 128px;
+            height: 128px;
+            margin: 0.5rem 1rem;
+        }
+
+        div {
+            max-width: 640px;
+            margin: 0.5rem 1rem;
         }
     }
 }
