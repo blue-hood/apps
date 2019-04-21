@@ -1,14 +1,15 @@
 #/bin/bash
 
-if [ $# -lt 1 ]; then
-  echo "Syntax: crawl.sh (host)"
-  exit 1;
-fi
+#if [ $# -lt 1 ]; then
+#  echo "Syntax: crawl.sh (host)"
+#  exit 1;
+#fi
 
 rm -rf html/
-wget -q -w 1 --random-wait --mirror --page-requisites --html-extension $1
-mv $1 html
-# ここで sitemap.xml も wget すること。つまり、ルートのリストが必要。
+cp -rL apps/public apps.bluehood.net
+wget -q --mirror --page-requisites --html-extension apps.bluehood.net # -w 1 --random-wait
+mv apps.bluehood.net html
+rm html/index.php html/mix-manifest.json
 
 for path in `find html/ -name '*.html?*'`
 do
