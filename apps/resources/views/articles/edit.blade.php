@@ -15,6 +15,13 @@
       mode:  'markdown',
       lineNumbers: true,
     });
+
+    const delete_button = document.querySelector('#delete-button');
+    delete_button.onclick = () => {
+      if (!window.confirm('削除しますか?')){
+        return false;
+      }
+    };
   </script>
 @endpush
 
@@ -71,6 +78,13 @@
           <input class="button-primary" type="submit" value="保存">
           <textarea name="content" id="content">{{ old('content', $article->content) }}</textarea>
         </form>
+
+        <form action="{{ normalize(route('articles.destroy', $article->id)) }}" method="POST">
+          {{ csrf_field() }}
+          @method('DELETE')
+          <input id="delete-button" class="button-danger" type="submit" value="削除">
+        </form>
+
       </section>
     </div>
   </article>

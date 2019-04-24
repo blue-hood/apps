@@ -26,6 +26,7 @@
         <h2>{{ $article->title }}</h2>
         <div class="content">
           {!! $article->parsed_content !!}
+          <div id="social"></div>
         </div>
         <h3>この記事の執筆者</h3>
         <div class="author">
@@ -41,7 +42,6 @@
             </p>
           </div>
         </div>
-        <div id="social"></div>
       </section>
     </div>
   </article>

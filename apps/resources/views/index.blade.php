@@ -16,13 +16,13 @@
     </div>
   </header>
   <article>
-      <div>
-    <section>
-      <h2>最近のアプリ</h2>
-    </section>
-    <section>        
-      <h2>最近の記事</h2>
-    </section>
-      </div>
+    <div>
+      {{--<section>
+        <h2>最近のアプリ</h2>
+      </section>
+      <section>        
+        <h2>最近の記事</h2>
+      </section>--}}
+    </div>
   </article>
 @endsection
