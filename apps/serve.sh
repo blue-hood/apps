@@ -7,4 +7,4 @@ php artisan route:clear
 php artisan view:clear
 php artisan cache:clear
 
-php artisan serve --host=apps.bluehood.net --port=80
+php artisan serve --host=localhost --port=80

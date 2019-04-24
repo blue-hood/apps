@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="{{ $twitter_card??'summary' }}">
 <meta name="twitter:site" content="@bluehood_admin">
 <meta property="og:url" content="{{ $canonical }}">
-@if(isset($title)) <meta property="og:title" content="{{ $title }}"> @endif
+<meta property="og:title" content="{{ $title??config('app.name') }}">
 @if(isset($description)) <meta property="og:description" content="{{ $description }}"> @endif
 <meta property="og:image" content="{{ $og_image??url('/images/og.png') }}">
 
