@@ -2,14 +2,11 @@
   $canonical = normalize(url()->full());   
 @endphp
 
-{{-- Google アナリティクス --}}
-
 <meta charset="utf-8">
 <title>@if(isset($title)){{ $title }} - @endif{{ config('app.name') }}</title>
 @if(isset($description)) <meta property="description" content="{{ $description }}"> @endif
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="theme-color" content="mediumslateblue">
 @if(isset($robots)) <meta name="robots" content="{{ $robots }}"> @endif
 
 <meta name="twitter:card" content="{{ $twitter_card??'summary' }}">
