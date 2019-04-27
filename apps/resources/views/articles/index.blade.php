@@ -15,7 +15,7 @@
 
         <div class="list">
             @foreach ($articles as $article)
-              <a class="content" href="{{ normalize(route('articles.show', $article->id)) }}">
+              <a class="content" href="{{ route('articles.show', $article->id) }}">
                 <img src="{{ $article->thumbnail }}" alt="{{ $article->title }}">
                 <div>{{ $article->date }}</div>
                 <h3>{{ $article->title }}</h3>

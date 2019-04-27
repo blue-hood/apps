@@ -34,6 +34,11 @@ h6 {
     font-weight: 700;
 }
 
+b,
+strong {
+    font-weight: 700;
+}
+
 a {
     color: inherit;
     text-decoration: none;
@@ -178,29 +183,6 @@ header {
 }
 
 // list
-ol {
-    counter-reset: ol-counter;
-
-    li {
-        position: relative;
-        list-style: none;
-
-        &::before {
-            counter-increment: ol-counter;
-            content: counters(ol-counter, ".");
-            padding-right: 0.5rem;
-
-            position: absolute;
-            top: 0;
-            left: -40px;
-
-            display: inline-block;
-            text-align: right;
-            width: 40px;
-        }
-    }
-}
-
 li {
     margin-left: 40px;
 }
@@ -263,6 +245,30 @@ footer {
         content: "目次";
         font-weight: 700;
     }
+
+    &,
+    ol {
+        counter-reset: ol-counter;
+
+        li {
+            position: relative;
+            list-style: none;
+
+            &::before {
+                counter-increment: ol-counter;
+                content: counters(ol-counter, ".");
+                padding-right: 0.5rem;
+
+                position: absolute;
+                top: 0;
+                left: -40px;
+
+                display: inline-block;
+                text-align: right;
+                width: 40px;
+            }
+        }
+    }
 }
 
 // articles.index
@@ -306,7 +312,13 @@ footer {
         h4,
         h5,
         h6 {
-            margin-bottom: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            &::before {
+                content: "📎";
+            }
         }
 
         & > p,
@@ -336,7 +348,6 @@ footer {
             border-color: #ddd;
             margin-bottom: 2rem;
             overflow: auto;
-            padding-left: 40px;
 
             ol.linenums > li {
                 list-style-type: decimal;

@@ -1,5 +1,5 @@
 @php
-  $canonical = normalize(url()->full());   
+  $canonical = url()->full();   
 @endphp
 
 <meta charset="utf-8">

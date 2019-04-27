@@ -79,11 +79,13 @@
           <textarea name="content" id="content">{{ old('content', $article->content) }}</textarea>
         </form>
 
-        <form action="{{ normalize(route('articles.destroy', $article->id)) }}" method="POST">
-          {{ csrf_field() }}
-          @method('DELETE')
-          <input id="delete-button" class="button-danger" type="submit" value="削除">
-        </form>
+        @if ($method=='PUT')
+          <form action="{{ route('articles.destroy', $article->id) }}" method="POST">
+            {{ csrf_field() }}
+            @method('DELETE')
+            <input id="delete-button" class="button-danger" type="submit" value="削除">
+          </form>
+        @endif
 
       </section>
     </div>

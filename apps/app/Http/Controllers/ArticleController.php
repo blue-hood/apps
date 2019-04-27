@@ -65,7 +65,7 @@ class ArticleController extends Controller
      */
     public function edit(Article $article = null)
     {
-        $action = normalize(is_null($article) ? route('articles.store') : route('articles.update', $article->id));
+        $action = is_null($article) ? route('articles.store') : route('articles.update', $article->id);
         $method = is_null($article) ? 'POST' : 'PUT';
 
         if (is_null($article)) {
@@ -107,7 +107,7 @@ class ArticleController extends Controller
             $article->delete();
         }
 
-        return redirect(normalize(route('articles.show', $newArticle->id)));
+        return redirect(route('articles.show', $newArticle->id));
     }
 
     /**
@@ -119,6 +119,6 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         $article->delete();
-        return redirect(normalize(route('articles.index')));
+        return redirect(route('articles.index'));
     }
 }
