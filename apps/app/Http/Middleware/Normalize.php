@@ -50,12 +50,21 @@ class Normalize
         $parsedUrl['query'] = $parsedUrl['query'] ?? '';
         $parsedUrl['fragment'] = $parsedUrl['fragment'] ?? '';
         parse_str($parsedUrl['query'], $params);
+        // パスを正確に dirname と basename に分離する。
+        preg_match('/(.*)\/(.*)/', $parsedUrl['path'], $matches);
+        $dirname = $matches[1] ?? '';
+        $dirname .= '/';
+        $basename = $matches[2] ?? '';
 
         // パス末尾に / を追加
-        if (mb_strpos(basename($parsedUrl['path']), '.') === false && preg_match('/\/$/', $parsedUrl['path']) !== 1) {
-            $parsedUrl['path'] .= '/';
+        if ($basename !== '' && mb_strpos($basename, '.') === false) {
+            $dirname .= $basename . '/';
+            $basename = '';
         }
-
+        // index.* を削除
+        $basename = preg_replace('/^index\.(.*)/', '', $basename);
+        // パスの // -> / 置き換え
+        $dirname = preg_replace('/\/\/+/', '/', $dirname);
         // クエリ並び替え
         ksort($params);
 
@@ -68,6 +77,7 @@ class Normalize
         if ($parsedUrl['fragment'] != '') {
             $parsedUrl['fragment'] = '#' . $parsedUrl['fragment'];
         }
+        $parsedUrl['path'] = $dirname . $basename;
         $url =
             $parsedUrl['scheme'] .
             $parsedUrl['host'] .
