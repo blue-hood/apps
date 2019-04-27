@@ -16,12 +16,15 @@ $colors: (
 );
 
 // typography
-@import url("https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,700");
-
 body {
-    font-family: "Noto Sans JP", sans-serif;
-    font-weight: 300;
-    color: $black;
+    font-family: "ヒラギノ角ゴシック Pro", "Hiragino Kaku Gothic Pro",
+        // for iOS
+            "游ゴシック Medium",
+        "Yu Gothic Medium",
+        // for Windows
+            sans-serif; // default
+    font-weight: normal;
+    color: rgba($black, 0.8);
     line-height: 1.75;
 }
 
@@ -30,13 +33,10 @@ h2,
 h3,
 h4,
 h5,
-h6 {
-    font-weight: 700;
-}
-
+h6,
 b,
 strong {
-    font-weight: 700;
+    font-weight: bold;
 }
 
 a {
@@ -105,7 +105,7 @@ nav {
         }
 
         h1 {
-            font-weight: 300;
+            font-weight: normal;
         }
 
         .nav-menu {
@@ -172,7 +172,7 @@ header {
             text-align: center;
             max-width: 42rem;
             margin: 6rem auto;
-            font-weight: 300;
+            font-weight: normal;
 
             img {
                 max-width: 256px;
@@ -243,7 +243,7 @@ footer {
 
     &::before {
         content: "目次";
-        font-weight: 700;
+        font-weight: bold;
     }
 
     &,
