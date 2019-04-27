@@ -41,22 +41,41 @@ class Normalize
 
     private function normalize($url)
     {
+        $isHtmlEncoded = $url !== htmlspecialchars_decode($url);
+        $url = htmlspecialchars_decode($url);
         $parsedUrl = parse_url($url);
-        if (isset($parsedUrl['scheme'])) {
-            $parsedUrl['scheme'] .= '://';
-        }
-        if (!isset($parsedUrl['path'])) {
-            $parsedUrl['path'] = '';
-        }
+        $parsedUrl['scheme'] = $parsedUrl['scheme'] ?? '';
+        $parsedUrl['host'] = $parsedUrl['host'] ?? '';
+        $parsedUrl['path'] = $parsedUrl['path'] ?? '';
+        $parsedUrl['query'] = $parsedUrl['query'] ?? '';
+        $parsedUrl['fragment'] = $parsedUrl['fragment'] ?? '';
+        parse_str($parsedUrl['query'], $params);
 
-        # パス末尾に / を追加
+        // パス末尾に / を追加
         if (mb_strpos(basename($parsedUrl['path']), '.') === false && preg_match('/\/$/', $parsedUrl['path']) !== 1) {
             $parsedUrl['path'] .= '/';
         }
 
-        $url = '';
-        foreach ($parsedUrl as $component) {
-            $url .= $component;
+        // クエリ並び替え
+        ksort($params);
+
+        if ($parsedUrl['scheme'] != '') {
+            $parsedUrl['scheme'] .= '://';
+        }
+        if (!empty($params)) {
+            $parsedUrl['query'] = '?' . http_build_query($params);
+        }
+        if ($parsedUrl['fragment'] != '') {
+            $parsedUrl['fragment'] = '#' . $parsedUrl['fragment'];
+        }
+        $url =
+            $parsedUrl['scheme'] .
+            $parsedUrl['host'] .
+            $parsedUrl['path'] .
+            $parsedUrl['query'] .
+            $parsedUrl['fragment'];
+        if ($isHtmlEncoded) {
+            $url = htmlspecialchars($url);
         }
         return $url;
     }

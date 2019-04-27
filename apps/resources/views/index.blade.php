@@ -9,10 +9,10 @@
 @section('content')
   <header>
     <div>
-          <h1>
-      <img src="{{ url('/images/bluehood.svg') }}" alt="BlueHood"><br>
-      BlueHood では人々の創作を支援するアプリをプロトタイピングし提供することが目標です。
-    </h1>
+      <h1>
+        <img src="{{ url('/images/bluehood.svg') }}" alt="BlueHood"><br>
+        BlueHood では人々の創作を支援するアプリをプロトタイピングし提供することが目標です。
+      </h1>
     </div>
   </header>
   <article>
