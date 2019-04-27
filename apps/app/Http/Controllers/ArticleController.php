@@ -16,7 +16,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        $articles = Article::simplePaginate(10);
+        $articles = Article::orderBy('updated_at', 'desc')->simplePaginate(10);
         foreach ($articles as &$article) {
             $article->date = Carbon::createFromFormat('Y-m-d H:i:s', $article->updated_at)->format('Y-m-d');
         }
