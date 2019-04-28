@@ -41,17 +41,16 @@ class Normalize
 
     private function normalize($url)
     {
-        $isHtmlEncoded = $url !== htmlspecialchars_decode($url);
-        $url = htmlspecialchars_decode($url);
-        $parsedUrl = parse_url($url);
-        $parsedUrl['scheme'] = $parsedUrl['scheme'] ?? '';
-        $parsedUrl['host'] = $parsedUrl['host'] ?? '';
-        $parsedUrl['path'] = $parsedUrl['path'] ?? '';
-        $parsedUrl['query'] = $parsedUrl['query'] ?? '';
-        $parsedUrl['fragment'] = $parsedUrl['fragment'] ?? '';
-        parse_str($parsedUrl['query'], $params);
-        // パスを正確に dirname と basename に分離する。
-        preg_match('/(.*)\/(.*)/', $parsedUrl['path'], $matches);
+        $elements = ['scheme', 'host', 'path', 'query', 'fragment'];
+
+        $isHtmlEncoded = $url !== ($decoded = htmlspecialchars_decode($url));
+        $url = $decoded;
+        $parsed = parse_url($url);
+        foreach ($elements as $element) {
+            $parsed[$element] = $parsed[$element] ?? '';
+        }
+        parse_str($parsed['query'], $params);
+        preg_match('/(.*)\/(.*)/', $parsed['path'], $matches);
         $dirname = $matches[1] ?? '';
         $dirname .= '/';
         $basename = $matches[2] ?? '';
@@ -68,25 +67,15 @@ class Normalize
         // クエリ並び替え
         ksort($params);
 
-        if ($parsedUrl['scheme'] != '') {
-            $parsedUrl['scheme'] .= '://';
+        $parsed['scheme'] .= empty($parsed['scheme']) ? '' : '://';
+        $parsed['query'] = empty($params) ? '' : '?' . http_build_query($params);
+        $parsed['fragment'] = empty($parsed['fragment']) ? '' : '#' . $parsed['fragment'];
+        $parsed['path'] = $dirname . $basename;
+        $url = '';
+        foreach ($elements as $element) {
+            $url .= $parsed[$element];
         }
-        if (!empty($params)) {
-            $parsedUrl['query'] = '?' . http_build_query($params);
-        }
-        if ($parsedUrl['fragment'] != '') {
-            $parsedUrl['fragment'] = '#' . $parsedUrl['fragment'];
-        }
-        $parsedUrl['path'] = $dirname . $basename;
-        $url =
-            $parsedUrl['scheme'] .
-            $parsedUrl['host'] .
-            $parsedUrl['path'] .
-            $parsedUrl['query'] .
-            $parsedUrl['fragment'];
-        if ($isHtmlEncoded) {
-            $url = htmlspecialchars($url);
-        }
+        $url = $isHtmlEncoded ? htmlspecialchars($url) : $url;
         return $url;
     }
 }
