@@ -182,6 +182,23 @@ header {
     }
 }
 
+// notfound
+.not-found {
+    @include container(1rem) {
+        h1 {
+            text-align: center;
+            max-width: 42rem;
+            margin: 6rem auto;
+            font-weight: normal;
+
+            img {
+                max-width: 256px;
+                height: auto;
+            }
+        }
+    }
+}
+
 // list
 li {
     margin-left: 40px;

@@ -11,6 +11,8 @@ domain="https://apps.bluehood.net"
 rm -rf html/
 cp -rL apps/public localhost
 wget -q --mirror --page-requisites --html-extension localhost
+curl -s localhost/404.html -o localhost/404.html
+curl -s localhost/50x.html -o localhost/50x.html
 mv localhost html
 
 # ドメイン置換
