@@ -301,24 +301,26 @@ footer {
 
 // articles.show
 .articles-show {
-    h2 {
+    margin-top: 2rem;
+
+    h1 {
         margin-bottom: 2rem;
     }
 
     .content {
+        max-width: 800px;
+        margin-left: auto;
+        margin-right: auto;
         border-bottom: 1px solid rgba($black, 0.1);
+        margin-bottom: 2rem;
 
+        h1,
+        h2,
         h3,
         h4,
         h5,
         h6 {
             margin-bottom: 1rem;
-        }
-
-        h3 {
-            &::before {
-                content: "📎";
-            }
         }
 
         & > p,
