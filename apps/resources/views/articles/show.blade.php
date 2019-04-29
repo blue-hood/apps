@@ -29,7 +29,10 @@
       </div>
       <h3>この記事の執筆者</h3>
       <div class="author">
-        <img src="{{ url('/storage/authors/images/hato6502.png') }}" alt="hato6502">
+        <picture>
+          <source type="image/webp" srcset="{{ url('/storage/authors/images/hato6502.webp') }} 1x">
+          <img src="{{ url('/storage/authors/images/hato6502.png') }}" alt="hato6502">
+        </picture>
         <div>
           <h4>hato6502
             &emsp;<a href="https://twitter.com/bluehood_admin?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false">Follow @bluehood_admin</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
