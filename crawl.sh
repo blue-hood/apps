@@ -19,7 +19,7 @@ mv localhost html
 grep -lr 'http://localhost' html/* | xargs sed -i -e "s#http://localhost#${domain}#g"
 
 # 不要ファイルの削除
-rm html/index.php html/mix-manifest.json
+rm html/index.php html/mix-manifest.json html/storage/.gitignore
 
 # sitemap.xml 登録リストの生成
 sitemaps=`find html/ -name *.html`
