@@ -364,6 +364,10 @@ footer {
             font-family: monospace;
         }
 
+        code {
+            background-color: rgba($black, 0.1);
+        }
+
         .prettyprint {
             border-radius: 3px;
             border-color: #ddd;
