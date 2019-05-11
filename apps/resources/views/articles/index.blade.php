@@ -3,7 +3,7 @@
 @section('meta')
   @include('meta', [
     'title' => '記事一覧',
-    'description' => 'BlueHood アプリの更新情報や、アプリ開発者のための技術情報をまとめています。',
+    'description' => 'Hood アプリの更新情報や、アプリ開発者のための技術情報をまとめています。',
   ])
 @endsection
 
