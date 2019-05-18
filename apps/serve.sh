@@ -1,6 +1,5 @@
 #!/bin/sh
 
-php artisan key:generate
 npm run production
 php artisan config:cache
 php artisan route:clear

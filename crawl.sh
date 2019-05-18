@@ -23,7 +23,7 @@ sitemaps=${sitemaps/404.html/}
 sitemaps=${sitemaps/50x.html/}
 
 # https://github.com/blue-hood/static-sitemap
-sitemap html/ old/ ${sitemaps[@]} > html/sitemap.xml
+sitemap ${domain} html/ old/ ${sitemaps[@]} > html/sitemap.xml
 
 # ファイル名置換
 for path in `find html/ -name '*.html?*'`
