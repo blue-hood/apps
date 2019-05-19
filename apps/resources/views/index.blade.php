@@ -2,7 +2,7 @@
 
 @section('meta')
   @include('meta', [
-    'description' => 'Hood では人々の創作を支援するサービスをプロトタイピングし提供しています。',
+    'description' => 'Hood では人々の創作を支援するアプリをプロトタイピングし提供することが目標です。',
   ])
 @endsection
 

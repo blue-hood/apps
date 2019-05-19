@@ -3,7 +3,7 @@
 @section('meta')
   @include('meta', [
     'title' => '記事の編集',
-    'description' => 'Hood Apps の記事を編集します。',
+    'description' => '記事を編集します。',
   ])
 @endsection
 

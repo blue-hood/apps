@@ -1,6 +1,6 @@
 #/bin/bash
 
-domain="https://apps.bluehood.net"
+domain="https://b-hood.site"
 
 # クローリング
 mv html/ old/ 2> /dev/null
