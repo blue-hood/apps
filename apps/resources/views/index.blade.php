@@ -19,10 +19,11 @@
     <div>
       {{--<section>
         <h2>最近のアプリ</h2>
-      </section>
+      </section>--}}
       <section>        
         <h2>最近の記事</h2>
-      </section>--}}
+        @include('article-list', ['articles' => $recent_articles])
+      </section>
     </div>
   </article>
 @endsection

@@ -8,25 +8,11 @@
 @endsection
 
 @section('content')
-  <article class="articles-index">
+  <article>
     <div>
       <section>
         <h2>記事一覧</h2>
-
-        <div class="list">
-            @foreach ($articles as $article)
-              <a class="content" href="{{ route('articles.show', $article->id) }}">
-                <picture>
-                  <source type="image/webp" srcset="{{ preg_replace("/(.*)\.(.*)/", "$1", $article->thumbnail) }}.webp 1x">
-                  <img src="{{ $article->thumbnail }}" alt="{{ $article->title }}">
-                </picture>
-                <div>{{ $article->date }}</div>
-                <h3>{{ $article->title }}</h3>
-                <p>{{ $article->description }}</p>
-              </a>
-            @endforeach
-        </div>
-
+        @include('article-list', ['articles' => $articles])
         {{ $articles->links() }}
       </section>
     </div>

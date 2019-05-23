@@ -11,5 +11,5 @@
 |
 */
 
-Route::view('', 'index')->name('index');
+Route::get('', 'TopController@index')->name('index');
 Route::resource('articles', 'ArticleController');
