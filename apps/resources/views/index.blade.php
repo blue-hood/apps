@@ -22,7 +22,7 @@
       </section>--}}
       <section>        
         <h2>最近の記事</h2>
-        @include('article-list', ['articles' => $recent_articles])
+        @include('article-list', ['articles' => $recentArticles])
       </section>
     </div>
   </article>
