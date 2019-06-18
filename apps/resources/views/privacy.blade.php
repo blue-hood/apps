@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+  {{ Breadcrumbs::render('privacy') }}
   <article class="privacy">
     <div>
       <h1>プライバシーポリシー</h1>

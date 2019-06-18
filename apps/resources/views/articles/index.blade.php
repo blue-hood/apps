@@ -8,6 +8,7 @@
 @endsection
 
 @section('content')
+  {{ Breadcrumbs::render('articles.index') }}
   <article>
     <div>
       <section>

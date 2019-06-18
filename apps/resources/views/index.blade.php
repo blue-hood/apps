@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+  {{-- Breadcrumbs::render('index') --}}
   <header>
     <div>
       <h1>

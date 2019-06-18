@@ -4,7 +4,7 @@ domain="https://b-hood.site"
 
 # クローリング
 cp -rL apps/public localhost
-wget -q --mirror --page-requisites --html-extension localhost
+wget -q --mirror --page-requisites localhost
 curl -s localhost/404.html -o localhost/404.html
 curl -s localhost/50x.html -o localhost/50x.html
 rm -rf html/*

@@ -165,6 +165,23 @@ nav {
     padding-top: $nav-height;
 }
 
+// breadcrumb
+.breadcrumb {
+    @include container(1rem) {
+        margin-top: 1rem;
+        font-size: small;
+
+        .breadcrumb-item {
+            display: inline;
+            margin-left: 0;
+
+            &:not(:last-child)::after {
+                content: " / ";
+            }
+        }
+    }
+}
+
 // header
 header {
     @include container(1rem) {

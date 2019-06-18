@@ -19,6 +19,7 @@
 @endpush
 
 @section('content')
+  {{ Breadcrumbs::render('articles.show', $article) }}
   <article class="articles-show">
     <div>
       <div>{{ $article->date }}</div>
@@ -34,7 +35,7 @@
           <img src="{{ url('/storage/authors/images/hato6502.png') }}" alt="hato6502">
         </picture>
         <div>
-          <h4>hato
+          <h4>hata
             &emsp;<a href="https://twitter.com/bluehood_admin?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false">Follow @bluehood_admin</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             {{-- <a href="https://github.com/hato6502" target="_blank">GitHub</a> --}}
           </h4>
