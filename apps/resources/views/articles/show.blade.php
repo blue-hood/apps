@@ -26,8 +26,22 @@
       <h1>{{ $article->title }}</h1>
       <div class="content">
         {!! $article->parsed_content !!}
+
         <div id="social"></div>
+
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- ディスプレイ広告 -->
+        <ins class="adsbygoogle"
+            style="display:block"
+            data-ad-client="ca-pub-7008780049786244"
+            data-ad-slot="5063315418"
+            data-ad-format="auto"
+            data-full-width-responsive="true"></ins>
+        <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
+
       <h3>この記事の執筆者</h3>
       <div class="author">
         <picture>

@@ -13,7 +13,7 @@
     <div>
       <section>
         <h2>記事一覧</h2>
-        @include('article-list', ['articles' => $articles])
+        @include('article-list', ['articles' => $articles, 'adsRate' => 0.1])
         {{ $articles->links() }}
       </section>
     </div>
