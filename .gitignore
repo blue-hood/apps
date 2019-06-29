@@ -1,3 +1,5 @@
+/node_modules
+/vendor
 /html/
 /apps/v8-compile-cache-0/
 /apps/public/css/
