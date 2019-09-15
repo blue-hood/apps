@@ -2,7 +2,7 @@
 
 @section('meta')
   @include('meta', [
-    'description' => 'Hood では人々の創作を支援するアプリをプロトタイピングし提供することが目標です。',
+    'description' => 'アプリのプロトタイピングと記事。',
   ])
 @endsection
 
@@ -12,7 +12,7 @@
     <div>
       <h1>
         <img src="{{ url('/images/bluehood.svg') }}" alt="Hood"><br>
-        Hood では人々の創作を支援するアプリをプロトタイピングし提供することが目標です。
+        アプリのプロトタイピングと記事。
       </h1>
     </div>
   </header>
