@@ -1,0 +1,3 @@
+[submodule "apps/apps-articles"]
+	path = apps/apps-articles
+	url = https://github.com/blue-hood/apps-articles
