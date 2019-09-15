@@ -13,4 +13,5 @@
 
 Route::get('', 'TopController@index')->name('index');
 Route::get('privacy', 'TopController@privacy')->name('privacy');
-Route::resource('articles', 'ArticleController');
+Route::get('articles', 'ArticleController@index')->name('articles.index');
+Route::get('articles/{id}', 'ArticleController@show')->name('articles.show');

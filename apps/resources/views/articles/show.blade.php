@@ -2,10 +2,10 @@
 
 @section('meta')
   @include('meta', [
-    'title' => $article->title,
-    'description' => $article->description,
+    'title' => $article['meta']['title'],
+    'description' => $article['meta']['description'],
     'twitter_card' => 'summary_large_image',
-    'og_image' => url($article->thumbnail),
+    'og_image' => url($article['meta']['thumbnail']),
   ])
 @endsection
 
@@ -22,10 +22,10 @@
   {{ Breadcrumbs::render('articles.show', $article) }}
   <article class="articles-show">
     <div>
-      <div>{{ $article->date }}</div>
-      <h1>{{ $article->title }}</h1>
+      <div>{{ $article['meta']['updated_at'] }}</div>
+      <h1>{{ $article['meta']['title'] }}</h1>
       <div class="content">
-        {!! $article->parsed_content !!}
+        {!! $article['html'] !!}
 
         <div id="social"></div>
 
@@ -49,7 +49,7 @@
           <img src="{{ url('/storage/authors/images/hato6502.png') }}" alt="hato6502">
         </picture>
         <div>
-          <h4>hata
+          <h4>Hata
             &emsp;<a href="https://twitter.com/bluehood_admin?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false">Follow @bluehood_admin</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
             {{-- <a href="https://github.com/hato6502" target="_blank">GitHub</a> --}}
           </h4>

@@ -2,16 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Article;
 
 class TopController extends Controller
 {
     public function index()
     {
-        $recentArticles = Article::orderBy('updated_at', 'desc')
-            ->take(3)
-            ->get();
+        $recentArticles = array_slice(Article::getMetas(), 0, 3);
         return view('index', compact('recentArticles'));
     }
 
