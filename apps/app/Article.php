@@ -13,13 +13,15 @@ class Article
     {
         $articlesPath = base_path('apps-articles');
         $articlePath = "${articlesPath}/${id}/index.md";
+        $file = file_get_contents($articlePath);
 
         $parser = new Parser(new Markdown());
         $parser->setFrontmatter(YamlFrontmatter::class);
 
-        $article = $parser->parse(file_get_contents($articlePath));
+        $article = $parser->parse($file);
         $article['meta']['id'] = $id;
         $article['meta']['updated_at'] = (new Carbon(filemtime($articlePath)))->format('Y-m-d');
+        $article['meta']['hash'] = hash('crc32b', $file);
 
         return $article;
     }

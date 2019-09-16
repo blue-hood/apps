@@ -22,7 +22,11 @@
   {{ Breadcrumbs::render('articles.show', $article) }}
   <article class="articles-show">
     <div>
-      <div>{{ $article['meta']['updated_at'] }}</div>
+      <div>
+        {{ $article['meta']['updated_at'] }}
+        &emsp;
+        <a href="https://github.com/blue-hood/apps-articles/commits/master/{{ $article['meta']['id'] }}/index.md" target="_blank" rel="noopener">{{ $article['meta']['hash'] }}</a>
+      </div>
       <h1>{{ $article['meta']['title'] }}</h1>
       <div class="content">
         {!! $article['html'] !!}
