@@ -31,7 +31,7 @@ class Article
         $articlesPath = base_path('apps-articles');
         $articlePaths = glob("${articlesPath}/*/index.md");
         usort($articlePaths, function ($a, $b) {
-            return filemtime($a) - filemtime($b);
+            return filemtime($b) - filemtime($a);
         });
 
         $articles = [];
