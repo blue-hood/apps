@@ -18,9 +18,19 @@
   </header>
   <article>
     <div>
-      {{--<section>
+      <section>
         <h2>最近のアプリ</h2>
-      </section>--}}
+        <div class="article-list">
+          <a class="article-card" href="https://pencil.b-hood.site" target="_blank" rel="noopener">
+            <picture>
+              <source type="image/webp" srcset="/storage/apps/images/pencil.webp 1x">
+              <img src="/storage/apps/images/pencil.png" alt="Hood Pencil">
+            </picture>
+            <h3>Hood Pencil</h3>
+            <p>Twitter に直接投稿できる気軽なお絵かきサービスです。</p>
+          </a>
+        </div>
+      </section>
       <section>        
         <h2>最近の記事</h2>
         @include('article-list', ['articles' => $recentArticles, 'adsRate' => 0.0])
