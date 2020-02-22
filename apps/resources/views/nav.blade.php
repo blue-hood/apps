@@ -6,6 +6,7 @@
       <a href="{{ route('articles.index') }}">Articles</a>
       <a href="https://github.com/blue-hood" target="_blank" rel="noopener">GitHub</a>
       <a href="https://twitter.com/bluehood_admin" target="_blank" rel="noopener">Twitter</a>
+      <a href="http://pigeon6502.blog.fc2.com/" target="_blank" rel="noopener">Old Blog</a>
     </div>
     <div class="hamburger-button">Menu</div>
   </div>

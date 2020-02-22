@@ -10,6 +10,7 @@
 @endsection
 
 @push('scripts')
+  <script async defer src="https://buttons.github.io/buttons.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   <script src="{{ url('/js/social-button.js') }}"></script>
 @endpush
@@ -27,7 +28,7 @@
         &emsp;
         <a href="https://github.com/blue-hood/apps-articles/commits/master/{{ $article['meta']['id'] }}/index.md" target="_blank" rel="noopener">{{ $article['meta']['hash'] }}</a>
       </div>
-      <h1>{{ $article['meta']['title'] }}</h1>
+      <h1>{!! $article['meta']['title'] !!}</h1>
       <div class="content">
         {!! $article['html'] !!}
 
@@ -48,18 +49,15 @@
 
       <h3>この記事の執筆者</h3>
       <div class="author">
-        <picture>
-          <source type="image/webp" srcset="{{ url('/storage/authors/images/hato6502.webp') }} 1x">
-          <img src="{{ url('/storage/authors/images/hato6502.png') }}" alt="hato6502">
-        </picture>
+        <img src="https://github.com/hata6502.png" alt="hata6502">
         <div>
-          <h4>Hata
-            &emsp;<a href="https://twitter.com/bluehood_admin?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false">Follow @bluehood_admin</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            {{-- <a href="https://github.com/hato6502" target="_blank">GitHub</a> --}}
+          <h4>Tomoyuki Hata
+            &emsp;<a href="https://twitter.com/hata6502?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-screen-name="false" data-show-count="false">Follow @hata6502</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <a class="github-button" href="https://github.com/hata6502" aria-label="Follow @hata6502 on GitHub">Follow @hata6502</a>
           </h4>
           <p>
             中学生の頃に 6502 という CPU からプログラミングの世界に入りました。
-            C/C++ で1から作ることも好きですが、最近は Web 系にシフトしつつあります。
+            C/C++ で1から作ることも好きですが、最近は Web 系に移行しつつあります。
           </p>
         </div>
       </div>

@@ -10,7 +10,7 @@ class ArticleController extends Controller
     public function index()
     {
         $articles = Article::getMetas();
-        $articles = new LengthAwarePaginator($articles, count($articles), 12);
+        $articles = new LengthAwarePaginator($articles, count($articles), 15);
         return view('articles.index', compact('articles'));
     }
 

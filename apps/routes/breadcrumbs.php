@@ -17,5 +17,5 @@ Breadcrumbs::for('articles.index', function ($trail) {
 
 Breadcrumbs::for('articles.show', function ($trail, array $article) {
     $trail->parent('articles.index');
-    $trail->push($article['meta']['title'], route('articles.show', $article['meta']['id']));
+    $trail->push(htmlspecialchars_decode($article['meta']['title']), route('articles.show', $article['meta']['id']));
 });
