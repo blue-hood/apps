@@ -5,7 +5,7 @@
     'title' => $article['meta']['title'],
     'description' => $article['meta']['description'],
     'twitter_card' => 'summary_large_image',
-    'og_image' => url($article['meta']['thumbnail']),
+    'og_image' => isset($article['meta']['thumbnail']) ? url($article['meta']['thumbnail']) : null,
   ])
 @endsection
 
