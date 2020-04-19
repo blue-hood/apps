@@ -21,6 +21,12 @@
       <section>
         <h2>最近のアプリ</h2>
         <div class="article-list">
+          <a class="article-card" href="https://kohsei-san.b-hood.site/" target="_blank" rel="noopener">
+            <img width="128" height="128" src="https://kohsei-san.b-hood.site/favicon.png" alt="校正さん">
+            <h3>校正さん</h3>
+            <p>その場ですぐに文章を校正できるメモ帳アプリです。</p>
+          </a>
+
           <a class="article-card" href="https://pencil.b-hood.site" target="_blank" rel="noopener">
             <picture>
               <source type="image/webp" srcset="/storage/apps/images/pencil.webp 1x">
